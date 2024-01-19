@@ -36,17 +36,20 @@ app.get('/books', (req, res) => {
 
 app.post('/books', (req, res) => {
 
-    const q = 'INSERT INTO books VALUES (?)'
+    const q = 'INSERT INTO books (`title`, `desc`, `price`) VALUES (?)'
 
-    const values = ['title from api', 'desc from api', 'price from api']
+    const values = [
+        req.body.title,
+        req.body.desc,
+        req.body.price]
+    
 
     db.query(q, [values], (err, data) => {
         if (err) {
             res.json(err);
         }
-        res.json(data);
+        res.json('Sent successfully');
     })
-
     
-})
+});
 
