@@ -1,0 +1,22 @@
+
+
+/* BOOK PAGE */
+
+.list{
+  padding: 20px;
+}
+
+.books{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.book{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+
+}
