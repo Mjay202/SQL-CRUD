@@ -77,7 +77,6 @@ app.put('/books/:id', (req, res) => {
         req.body.desc,
         req.body.price]
     
-
     db.query(q, [...values, bookId], (err, data) => {
         if (err) {
          console.log(err);
