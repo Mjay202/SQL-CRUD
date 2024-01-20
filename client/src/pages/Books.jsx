@@ -9,15 +9,7 @@ const Books = () => {
 
     const [books, setbooks] = useState([]);
 
-    const handleClick = async (id) => {
-
-        try {
-            await axios.delete("http://localhost:7000/books/" + id);
-            window.location.reload();
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    
     
     useEffect(() => {
       
@@ -37,7 +29,16 @@ const Books = () => {
 
         fetchData();
       
-    }, [])
+    }, []);
+
+    const handleDelete = async (id) => {
+      try {
+        await axios.delete("http://localhost:7000/books/" + id);
+        window.location.reload();
+      } catch (err) {
+        console.log(err);
+      }
+    };
     
 
 
@@ -54,7 +55,7 @@ const Books = () => {
                 <button>Update</button>
               </Link>
               <Link>
-                <button onClick={handleClick(book.id)}>Delete</button>
+                <button onClick={()=>handleDelete(book.id)}>Delete</button>
               </Link>
             </div>
           ))}
