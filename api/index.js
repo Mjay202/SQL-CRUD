@@ -49,7 +49,7 @@ app.post('/books', (req, res) => {
         if (err) {
            return res.json(err);
         }
-       return res.json('Sent successfully');
+       return res.json('Added successfully');
     })
     
 });
@@ -67,22 +67,23 @@ app.delete('/books/:id', (req, res) => {
     })
 });
 
-// app.put('/books', (req, res) => {
+app.put('/books/:id', (req, res) => {
+    const bookId = req.params.id;
 
-//     const q = 'UPDATE books (`title`, `desc`, `price`) VALUES (?)'
+    const q = 'UPDATE books SET `title`: ?, `desc` : ?, `price` : ? WHERE id = ?'
 
-//     const values = [
-//         req.body.title,
-//         req.body.desc,
-//         req.body.price]
+    const values = [
+        req.body.title,
+        req.body.desc,
+        req.body.price]
     
 
-//     db.query(q, [values], (err, data) => {
-//         if (err) {
-//             res.json(err);
-//         }
-//         res.json('Sent successfully');
-//     })
+    db.query(q, [...values, bookId], (err, data) => {
+        if (err) {
+            res.json(err);
+        }
+        res.json('Updated successfully');
+    })
     
-// });
+});
 

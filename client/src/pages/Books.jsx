@@ -51,7 +51,7 @@ const Books = () => {
               <div>Title: {book.title}</div>
               <div>Description: {book.desc}</div>
               <div>Price: {book.price}</div>
-              <Link>
+              <Link to={`/update/${book.id}`}>
                 <button>Update</button>
               </Link>
               <Link>
