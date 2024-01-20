@@ -5,7 +5,7 @@ import { useNavigate , useLocation} from "react-router-dom";
 const Update = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  
+  const bookId = location.pathname.split("/")[2];
 
   const [book, setbook] = useState({
     title: "",
@@ -13,7 +13,7 @@ const Update = () => {
     price: "",
   });
 
-  console.log(location.pathname.split('/')[2])
+ 
 
   const handleChange = (e) => {
     setbook((prev) => ({
@@ -25,7 +25,7 @@ const Update = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:7000/books", book);
+      await axios.put("http://localhost:7000/books/" +bookId, book);
       navigate("/books");
     } catch (err) {
       console.log(err);
