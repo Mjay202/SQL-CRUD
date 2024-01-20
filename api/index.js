@@ -70,7 +70,7 @@ app.delete('/books/:id', (req, res) => {
 app.put('/books/:id', (req, res) => {
     const bookId = req.params.id;
 
-    const q = 'UPDATE books SET `title`: ?, `desc` : ?, `price` : ? WHERE id = ?'
+    const q = 'UPDATE books SET `title`= ?, `desc` = ?, `price` = ? WHERE id = ?'
 
     const values = [
         req.body.title,
@@ -80,9 +80,9 @@ app.put('/books/:id', (req, res) => {
 
     db.query(q, [...values, bookId], (err, data) => {
         if (err) {
-            res.json(err);
+         console.log(err);
         }
-        res.json('Updated successfully');
+       return res.json('Updated successfully');
     })
     
 });
