@@ -9,14 +9,23 @@
 .books{
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  gap: 20px;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
 .book{
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   gap: 20px;
+  flex-direction: column;
+  flex: 2;
+  width: 20vw;
+}
 
+.new{
+  margin-top: 40px;
 }
